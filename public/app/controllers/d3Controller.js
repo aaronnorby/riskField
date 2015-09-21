@@ -1,21 +1,12 @@
 riskField
-  .controller('d3ArrayController', ['$scope', function($scope) {
+  .controller('d3ArrayController', ['$scope', 'd3DataGenerator', function($scope, d3DataGenerator) {
 
      // test data;
-     var firstAlternative = Math.random();
+     var firstAlternative = Math.floor(Math.random() * 100) / 100;
      var secondAlternative = 1 - firstAlternative;
 
-     var height = '500';
-     var width = '500';
+     var probs = [firstAlternative, secondAlternative];
 
-     var riskData = [];
-     for (var i = 0; i < Math.floor(100*firstAlternative); i++) {
-       riskData.push('first');
-     }
-     for (var i = 0; i < Math.ceil(100*secondAlternative); i++) {
-       riskData.push('second');
-     }
-
-     $scope.riskData = _.shuffle(riskData);
+     $scope.riskData = d3DataGenerator.probsToData(probs);
 
   }]);

@@ -18,6 +18,8 @@ riskField
              datapoints.push(datapoint);
            }
         }
+        // shuffle or all of one probability level will be adjacent 
+        return _.shuffle(datapoints);
       }
     };
   }]);
