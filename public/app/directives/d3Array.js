@@ -1,5 +1,5 @@
-angular.module('riskField.directives')
-  .directive('d3Array', ['d3', function(d3) {
+riskField
+  .directive('d3Array', [function() {
     return {
       // restrict use of the directive to element tags
       restrict: 'E',

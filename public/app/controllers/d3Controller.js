@@ -1,4 +1,4 @@
-angular.module('riskField.controllers')
+riskField
   .controller('d3ArrayController', ['$scope', function($scope) {
 
      // test data;
