@@ -6,6 +6,7 @@ angular.module('riskField.directives')
 
       link: function(scope, element, attributes) {
         // attaching to the directive's element
+        // element is wrapped in jqlite so it's array-like
         var svg = d3.select(element[0])
           .append('svg');
       }
