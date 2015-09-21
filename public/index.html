@@ -9,12 +9,13 @@
   <body ng-app="riskField">
 
     <div ng-controller="d3ArrayController">
-      <d3-array data="riskData"></d3-array>
+      <d3-array data="riskData" probabilities="probabilities"></d3-array>
     </div>
 
     <script src="bower_components/d3/d3.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
+    <script src="lib/colorbrewer.js"></script>
     
     <script src="app/riskField.js"></script>
     <script src="app/controllers/d3Controller.js"></script>

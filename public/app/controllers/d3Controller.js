@@ -7,6 +7,7 @@ riskField
 
      var probs = [firstAlternative, secondAlternative];
 
+     $scope.probabilities = probs;
      $scope.riskData = d3DataGenerator.probsToData(probs);
 
   }]);

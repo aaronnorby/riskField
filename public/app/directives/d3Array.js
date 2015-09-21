@@ -5,17 +5,19 @@ riskField
       restrict: 'E',
 
       scope: {
-        data: '='
+        data: '=',
+        probabilities: '='
       },
 
       link: function(scope, element, attributes) {
         var width = 500;
         var height = 500;
 
-        var colors = {
-          'first': '#9467bd',
-          'second': '#ff7f0e' 
-        };
+        // get a colorscale to auto fill colors
+        var colorScale = d3.scale.ordinal()
+          .domain(scope.probabilities)
+          .range(colorbrewer.BrBG[5]); // up to five colors
+
 
         // attaching to the directive's element
         // element is wrapped in jqlite so it's array-like
@@ -42,7 +44,7 @@ riskField
           })
           .attr('r', 9)
           .attr('fill', function(d) {
-            return colors[d];
+            return colorScale(d.probability);
           });
             
             
