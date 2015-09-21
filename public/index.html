@@ -8,12 +8,16 @@
   </head>
   <body ng-app="riskField">
 
-    <d3-array data="riskData"></d3-array>
-    
+    <div ng-controller="d3ArrayController">
+      <d3-array data="riskData"></d3-array>
+    </div>
+
     <script src="bower_components/angular/angular.js"></script>
-    <script src="app/riskField.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    
     <script src="app/controllers/d3Controller.js"></script>
     <script src="app/factories/d3.js"></script>
     <script src="app/directives/d3Array.js"></script>
+    <script src="app/riskField.js"></script>
   </body>
 </html>
