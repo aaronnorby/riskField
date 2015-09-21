@@ -12,6 +12,11 @@ riskField
         var width = 500;
         var height = 500;
 
+        var colors = {
+          'first': '#9467bd',
+          'second': '#ff7f0e' 
+        };
+
         // attaching to the directive's element
         // element is wrapped in jqlite so it's array-like
         var svg = d3.select(element[0])
@@ -27,7 +32,7 @@ riskField
           .attr('cy', -90)
           .transition()
           .ease('square')
-          .duration(400)
+          .duration(500)
           .delay(function(d, i) {return i * 50;})
           .attr('cx', function(d, i) {
             return (i * 50)%500 + 9;
