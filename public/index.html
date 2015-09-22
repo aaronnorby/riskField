@@ -14,11 +14,11 @@
         
     <div class="array" ng-controller="d3ArrayController">
       <form name="buildingSearch" novalidate>
-        <input name="search" type="text" ng-model="searchText" placeholder="Search here" ng-minlength="2">
+        <input name="search" type="text" ng-click="clickTrue()" ng-model="searchText" placeholder="Search here" ng-minlength="2">
       </form>
       <div class="buildings"  ng-repeat="building in buildingData | filter:searchText | limitTo:15">
         <div class="oneBuilding" ng-show="buildingSearch.search.$dirty &&
-          buildingSearch.search.$valid" ng-click="visBuilding(building)">  
+          buildingSearch.search.$valid && notClicked" ng-click="visBuilding(building)">  
           <span>Hospital: {{building.facilityName}}, </span>
           <span>Building: {{building.buildingName}}, </span>
           <span>County: {{building.countyCode}}</span>

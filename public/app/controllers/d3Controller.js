@@ -1,5 +1,10 @@
 riskField
   .controller('d3ArrayController', ['$scope', 'd3DataGenerator', 'dataFetcher', function($scope, d3DataGenerator, dataFetcher) {
+     $scope.notClicked = true;
+
+     $scope.clickTrue= function() {
+       $scope.notClicked = true;
+     }; 
 
      $scope.buildingData = [];
 
@@ -28,14 +33,15 @@ riskField
      };
 
      $scope.visBuilding = function(building) {
+       $scope.notClicked = false;
        var dataset = {};
        // probs come out in format of 27.6. This makes sure they're like 0.28 with
        // max 2 decimals
        var collapseProbability = Number((Math.round(building.hazus2010) / 100).toFixed(2));
        var notCollapseProbability = 1 - collapseProbability;
        var outcomes = [];
-       outcomes.push({'event': 'collapse', 'probability': collapseProbability});
-       outcomes.push({'event': 'not collapse', 'probability': notCollapseProbability});
+       outcomes.push({'event': 'collapse', 'probability': collapseProbability, 'name': building.facilityName});
+       outcomes.push({'event': 'not collapse', 'probability': notCollapseProbability, 'name': building.facilityName});
 
        dataset.probabilities = [collapseProbability, notCollapseProbability];
        dataset.data = d3DataGenerator.probsToData(outcomes);

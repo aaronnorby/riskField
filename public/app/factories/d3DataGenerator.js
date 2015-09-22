@@ -16,6 +16,7 @@ riskField
              var datapoint = {};
              datapoint.probability = prob;
              datapoint['event'] = outcomes[i]['event'];
+             datapoint['name'] = outcomes[i].name;
              datapoints.push(datapoint);
            }
         }
