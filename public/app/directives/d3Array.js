@@ -1,5 +1,5 @@
 riskField
-  .directive('d3Array', [function() {
+  .directive('d3Field', [function() {
     return {
 
       // restrict use of the directive to element tags 

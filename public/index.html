@@ -8,9 +8,17 @@
   </head>
   <body ng-app="riskField">
 
-    <div ng-controller="d3ArrayController">
-      <d3-array data="riskData" probabilities="probabilities"></d3-array>
+
+        
+    <div class="array" ng-controller="d3ArrayController">
+      <button ng-click="addSet()">Add set</button>
+      <div ng-repeat="dataset in datasets">
+        <d3-field data="dataset.data" probabilities="dataset.probabilities"></d3-field>
+      </div>
     </div>
+
+
+    
 
     <script src="bower_components/d3/d3.js"></script>
     <script src="bower_components/angular/angular.js"></script>

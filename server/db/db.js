@@ -17,3 +17,5 @@ module.exports.Risks = Risks = seq.define('risks', {
   hazus2010: Sequelize.FLOAT,
   npcRating: Sequelize.STRING,
 });
+
+
