@@ -17,9 +17,11 @@ riskField
         var height = 500;
 
         // get a colorscale to auto fill colors
-        var colorScale = d3.scale.ordinal()
-          .domain(scope.probabilities)
-          .range(colorbrewer.BrBG[5]); // up to five colors
+        // var colorScale = d3.scale.ordinal()
+        //   .domain(scope.probabilities)
+        //   .range(colorbrewer.BrBG[5]); // up to five colors
+
+        
 
 
         // attaching to the directive's element
@@ -29,10 +31,25 @@ riskField
           .attr('height', height)
           .attr('width', width);
 
+        // get the tooltip ready
+        var tip = d3.tip()
+          .attr('class', 'd3-tip')
+          .offset([-3, 120])
+          .html(function(d) {
+            return '<span style="padding:2px; background:rgba(0,0,0,0.8);color:#fff;border-radius:2px">Event: ' + 
+              d.event + ', Probability: ' +
+              d.probability + '</span>';
+          });
+
+
+        svg.call(tip);
+
         svg.selectAll('circle')
           .data(scope.data)
           .enter()
           .append('svg:circle')
+          .on('mouseover', tip.show)
+          .on('mouseout', tip.hide)
           .attr('cx', 250)
           .attr('cy', -90)
           .transition()
@@ -49,6 +66,7 @@ riskField
           .attr('fill', function(d) {
             return colorScale(d.probability);
           });
+          
       }
     };
   }]);

@@ -33,10 +33,12 @@ riskField
        // max 2 decimals
        var collapseProbability = Number((Math.round(building.hazus2010) / 100).toFixed(2));
        var notCollapseProbability = 1 - collapseProbability;
-       var probs = [collapseProbability, notCollapseProbability];
+       var outcomes = [];
+       outcomes.push({'event': 'collapse', 'probability': collapseProbability});
+       outcomes.push({'event': 'not collapse', 'probability': notCollapseProbability});
 
-       dataset.probabilities = probs;
-       dataset.data = d3DataGenerator.probsToData(probs);
+       dataset.probabilities = [collapseProbability, notCollapseProbability];
+       dataset.data = d3DataGenerator.probsToData(outcomes);
        $scope.datasets.push(dataset);
 
        console.log(building.buildingNo);
@@ -51,6 +53,9 @@ riskField
         var probs = [firstAlternative, secondAlternative];
 
         dataset.probabilities = probs;
+        
+        // dataGenerator will return an array [{event: eventName, probability:
+        // 0.1}]
         dataset.data = d3DataGenerator.probsToData(probs);
         $scope.datasets.push(dataset);
      };

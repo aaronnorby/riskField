@@ -16,8 +16,8 @@
         <input name="search" type="text" ng-model="searchText" placeholder="Search here" ng-minlength="2">
       </form>
       <div class="buildings"  ng-repeat="building in buildingData | filter:searchText">
-        <div class="oneBuilding" ng-show="buildingSearch.$dirty &&
-          buildingSearch.$valid" ng-click="visBuilding(building)">  
+        <div class="oneBuilding" ng-show="buildingSearch.search.$dirty &&
+          buildingSearch.search.$valid" ng-click="visBuilding(building)">  
           <span>Hospital: {{building.facilityName}}</span>
           <span>Building: {{building.buildingName}}</span>
         </div>
@@ -32,6 +32,7 @@
     
 
     <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/d3-tip/index.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="lib/colorbrewer.js"></script>
