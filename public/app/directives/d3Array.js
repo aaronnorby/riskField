@@ -11,6 +11,8 @@ riskField
       },
 
       link: function(scope, element, attributes) {
+        element.css({'margin': '20px', 'float': 'left'});
+
         var width = 500;
         var height = 500;
 
