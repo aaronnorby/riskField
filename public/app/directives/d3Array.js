@@ -1,7 +1,8 @@
 riskField
   .directive('d3Array', [function() {
     return {
-      // restrict use of the directive to element tags
+
+      // restrict use of the directive to element tags 
       restrict: 'E',
 
       scope: {
