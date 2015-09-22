@@ -1,8 +1,11 @@
 riskField
   .controller('d3ArrayController', ['$scope', 'd3DataGenerator', 'dataFetcher', function($scope, d3DataGenerator, dataFetcher) {
 
-     $scope.buildingNames = [];
+     $scope.buildingData = [];
 
+     $scope.datasets = [];
+     
+     // **test data: 
      // $scope.buildingNames = [
      //  { 
      //    'facilityName': 'Alta Bates',
@@ -19,16 +22,26 @@ riskField
      $scope.getNames = function() {
        dataFetcher.getBuildingNames()
          .then(function(names) {
-           $scope.buildingNames = names;
+           $scope.buildingData = names;
            console.dir(names);
          });
      };
 
-     $scope.getBuildingData = function(building) {
+     $scope.visBuilding = function(building) {
+       var dataset = {};
+       // probs come out in format of 27.6. This makes sure they're like 0.28 with
+       // max 2 decimals
+       var collapseProbability = Number((Math.round(building.hazus2010) / 100).toFixed(2));
+       var notCollapseProbability = 1 - collapseProbability;
+       var probs = [collapseProbability, notCollapseProbability];
+
+       dataset.probabilities = probs;
+       dataset.data = d3DataGenerator.probsToData(probs);
+       $scope.datasets.push(dataset);
+
        console.log(building.buildingNo);
      };
 
-     $scope.datasets = [];
 
      $scope.addSet = function() {
         var dataset = {};

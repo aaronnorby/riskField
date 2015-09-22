@@ -15,14 +15,14 @@
       <form name="buildingSearch" novalidate>
         <input name="search" type="text" ng-model="searchText" placeholder="Search here" ng-minlength="2">
       </form>
-      <div class="buildings"  ng-repeat="building in buildingNames | filter:searchText">
+      <div class="buildings"  ng-repeat="building in buildingData | filter:searchText">
         <div class="oneBuilding" ng-show="buildingSearch.$dirty &&
-          buildingSearch.$valid" ng-click="getBuildingData(building)">  
+          buildingSearch.$valid" ng-click="visBuilding(building)">  
           <span>Hospital: {{building.facilityName}}</span>
           <span>Building: {{building.buildingName}}</span>
         </div>
       </div>
-      <button ng-click="addSet()">Add set</button>
+      <button ng-click="addSet()">Add random set</button>
       <div ng-repeat="dataset in datasets">
         <d3-field data="dataset.data" probabilities="dataset.probabilities"></d3-field>
       </div>
