@@ -9,7 +9,7 @@ module.exports.Risks = Risks = seq.define('risks', {
   countyCode: Sequelize.STRING,
   permId: Sequelize.INTEGER,
   facilityName: Sequelize.STRING,
-  buildingNo: Sequelize.INTEGER,
+  buildingNo: Sequelize.STRING,
   buildingName: Sequelize.STRING,
   buildingStatus: Sequelize.STRING,
   spcRating: Sequelize.INTEGER,
@@ -17,5 +17,8 @@ module.exports.Risks = Risks = seq.define('risks', {
   hazus2010: Sequelize.FLOAT,
   npcRating: Sequelize.STRING,
 });
+
+
+Risks.sync();
 
 
