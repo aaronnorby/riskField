@@ -1,0 +1,24 @@
+{
+  "name": "riskfield",
+  "version": "0.1.0",
+  "description": "For visualizing risk to facilitate better decisions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronnorby/riskField.git"
+  },
+  "author": "Aaron Norby <aaron.norby@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aaronnorby/riskField/issues"
+  },
+  "homepage": "https://github.com/aaronnorby/riskField#readme",
+  "dependencies": {
+    "csv": "^0.4.6",
+    "mysql": "^2.9.0",
+    "sequelize": "^3.9.0"
+  }
+}
