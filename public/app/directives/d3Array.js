@@ -58,10 +58,10 @@ riskField
           .duration(500)
           .delay(function(d, i) {return i * 50;})
           .attr('cx', function(d, i) {
-            return (i * 50)%500 + 9;
+            return (i * 50)%500 + 25;
           })
           .attr('cy', function(d, i) {
-            return (Math.floor(i/10)) * 50 + 15;
+            return (Math.floor(i/10)) * 50 + 25;
           })
           .attr('r', 9)
           .attr('fill', function(d) {

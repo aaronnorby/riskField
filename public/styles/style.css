@@ -5,3 +5,25 @@ body {
 .oneBuilding {
   margin: 5px;
 }
+
+.buildings span:hover {
+  cursor: pointer;
+  background: #9467bd;
+}
+
+svg {
+  border: 1px solid black;
+}
+
+.search {
+  width: 25%;
+  margin: auto;
+}
+
+.title {
+  text-align: center;
+}
+
+.md-content {
+  text-align: center;
+}

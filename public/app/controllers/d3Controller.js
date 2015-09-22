@@ -1,10 +1,18 @@
 riskField
   .controller('d3ArrayController', ['$scope', 'd3DataGenerator', 'dataFetcher', function($scope, d3DataGenerator, dataFetcher) {
-     $scope.notClicked = true;
+     $scope.showResults = false;
 
-     $scope.clickTrue= function() {
+     $scope.clickTrue= function () {
        $scope.notClicked = true;
      }; 
+
+     $scope.revealResults = function () {
+       $scope.showResults = true;
+     };
+
+     $scope.hideResults = function () {
+       $scope.showResults = false;
+     };
 
      $scope.buildingData = [];
 
@@ -33,7 +41,7 @@ riskField
      };
 
      $scope.visBuilding = function(building) {
-       $scope.notClicked = false;
+       $scope.showResults = false;
        var dataset = {};
        // probs come out in format of 27.6. This makes sure they're like 0.28 with
        // max 2 decimals
