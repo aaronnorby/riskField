@@ -21,8 +21,8 @@ riskField
         //   .domain(scope.probabilities)
         //   .range(colorbrewer.BrBG[5]); // up to five colors
 
-        
-
+        var colorScale = d3.scale.category10()
+          .domain(scope.probabilities);
 
         // attaching to the directive's element
         // element is wrapped in jqlite so it's array-like
