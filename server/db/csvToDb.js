@@ -1,3 +1,7 @@
+/* This code is for inserting the csv data into our database. 
+ * It should only run once, before the server starts up (not automated). 
+ */
+
 var csv = require('csv');
 var fs = require('fs');
 var db = require('./db.js');
@@ -17,11 +21,11 @@ var csvSqlMapping = {
 };
 
 
-fs.readFile('./seismic-truncated.csv', function(err, result) {
+fs.readFile('./Seismic_Ratings_and_Collapse_Probabilities_of_California_Hospitals.csv', function(err, result) {
   if (err) console.log("error reading file: ", err);
   csv.parse(result, function(err, output) {
     if (err) console.log("error parsing csv: ", err);
-    console.log(output);
+    
 
     // put output in the db
     // output should be an array of arrays
@@ -30,7 +34,10 @@ fs.readFile('./seismic-truncated.csv', function(err, result) {
       // we're leaving the last two columns out of the db
       var dbRow = {};
       for (var cell = 0; cell < 10; cell++) {
-        dbRow[csvSqlMapping[cell]] = output[row][cell] || null;
+        // leave it out if no hazus 2010 data
+        if (cell !== 8 || output[row][cell] !== '') {
+          dbRow[csvSqlMapping[cell]] = output[row][cell] || null;
+        }
       }
       db.Risks.create(dbRow);
     }

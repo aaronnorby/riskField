@@ -1,6 +1,7 @@
-.d3-tip {
-  font-weight: bold;
-  background: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  border-radius: 2px;
+body {
+  font-family: 'Helvetica', sans-serif;
+}
+
+.oneBuilding {
+  margin: 5px;
 }
