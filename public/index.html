@@ -9,8 +9,19 @@
   <body ng-app="riskField">
 
 
+
         
     <div class="array" ng-controller="d3ArrayController">
+      <form name="buildingSearch" novalidate>
+        <input name="search" type="text" ng-model="searchText" placeholder="Search here" ng-minlength="2">
+      </form>
+      <div class="buildings"  ng-repeat="building in buildingNames | filter:searchText">
+        <div class="oneBuilding" ng-show="buildingSearch.$dirty &&
+          buildingSearch.$valid" ng-click="getBuildingData(building)">  
+          <span>Hospital: {{building.facilityName}}</span>
+          <span>Building: {{building.buildingName}}</span>
+        </div>
+      </div>
       <button ng-click="addSet()">Add set</button>
       <div ng-repeat="dataset in datasets">
         <d3-field data="dataset.data" probabilities="dataset.probabilities"></d3-field>
@@ -28,6 +39,7 @@
     <script src="app/riskField.js"></script>
     <script src="app/controllers/d3Controller.js"></script>
     <script src="app/factories/d3DataGenerator.js"></script>
+    <script src="app/factories/dataFetcher.js"></script>
     <script src="app/directives/d3Array.js"></script>
     
   </body>

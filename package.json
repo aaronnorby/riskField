@@ -4,7 +4,8 @@
   "description": "For visualizing risk to facilitate better decisions.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./server/server.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,9 @@
   },
   "homepage": "https://github.com/aaronnorby/riskField#readme",
   "dependencies": {
+    "body-parser": "^1.14.0",
     "csv": "^0.4.6",
+    "express": "^4.13.3",
     "mysql": "^2.9.0",
     "sequelize": "^3.9.0"
   }
