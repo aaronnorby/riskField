@@ -49,8 +49,6 @@ riskField
           .attr('fill', function(d) {
             return colorScale(d.probability);
           });
-            
-            
       }
     };
   }]);
