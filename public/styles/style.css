@@ -6,6 +6,15 @@ body {
   margin: 5px;
 }
 
+.buildings {
+  margin-left: 10%;
+}
+
+.buildings span {
+  padding: .25em;
+  border-radius: 2px;
+}
+
 .buildings span:hover {
   cursor: pointer;
   background: #9467bd;
@@ -20,6 +29,12 @@ svg {
   margin: auto;
 }
 
+.userRisk {
+  width: 25%;
+  margin: auto;
+  text-align: center;
+}
+
 .title {
   text-align: center;
 }
@@ -27,3 +42,15 @@ svg {
 .md-content {
   text-align: center;
 }
+
+.randButton {
+  text-align: center;
+}
+
+.d3Container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+

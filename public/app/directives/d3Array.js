@@ -34,7 +34,7 @@ riskField
         // get the tooltip ready
         var tip = d3.tip()
           .attr('class', 'd3-tip')
-          .offset([-3, 120])
+          .offset([-30, 120])
           .html(function(d) {
             return '<span style="padding:2px; background:rgba(0,0,0,0.8);color:#fff;border-radius:2px">Event: ' + 
               d.event + ', Probability: ' +

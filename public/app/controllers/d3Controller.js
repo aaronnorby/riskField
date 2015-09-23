@@ -58,6 +58,27 @@ riskField
        console.log(building.buildingNo);
      };
 
+     $scope.userVis = function () {
+        var dataset = {};
+
+        // make sure it's two decimal points. toFixed returns a string so you have
+        // to call Number() twice
+        var firstAlternative = Number((Number($scope.user)).toFixed(2));
+        var secondAlternative = 1 - firstAlternative;
+
+        var probs = [firstAlternative, secondAlternative];
+
+        dataset.probabilities = probs;
+        
+        // dataGenerator will return an array [{event: eventName, probability:
+        // 0.1}]
+        var outcomes = [];
+        outcomes.push({'event': 'p', 'probability': firstAlternative, 'name': 'example'});
+        outcomes.push({'event': 'not-p', 'probability': secondAlternative, 'name': 'example'});
+
+        dataset.data = d3DataGenerator.probsToData(outcomes);
+        $scope.datasets.push(dataset);
+     };
 
      $scope.addSet = function() {
         var dataset = {};
@@ -70,7 +91,11 @@ riskField
         
         // dataGenerator will return an array [{event: eventName, probability:
         // 0.1}]
-        dataset.data = d3DataGenerator.probsToData(probs);
+        var outcomes = [];
+        outcomes.push({'event': 'p', 'probability': firstAlternative, 'name': 'example'});
+        outcomes.push({'event': 'not-p', 'probability': secondAlternative, 'name': 'example'});
+
+        dataset.data = d3DataGenerator.probsToData(outcomes);
         $scope.datasets.push(dataset);
      };
 

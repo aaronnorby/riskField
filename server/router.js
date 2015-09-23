@@ -11,7 +11,6 @@ router.get('/buildingnames', function(req, res) {
   db.Risks.findAll()
     .then(function(hospitals) {
       res.status(200);
-      console.log("h: ", hospitals);
       res.send(hospitals);
     })
     .catch(function(err) {

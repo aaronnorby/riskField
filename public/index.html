@@ -2,22 +2,22 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"> 
+
+    <title>Risk Field</title>
+
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
 
-    <title>Risk Field</title>
-    
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="lib/colorbrewer.js"></script>
+    <script src="bower_components/d3-tip/index.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-material/angular-material.min.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+
   </head>
-
-  <script src="bower_components/d3/d3.js"></script>
-  <script src="lib/colorbrewer.js"></script>
-  <script src="bower_components/d3-tip/index.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-aria/angular-aria.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.js"></script>
-  <script src="bower_components/angular-material/angular-material.js"></script>
-  <script src="bower_components/underscore/underscore.js"></script>
-
 
 
   <body ng-app="riskField">
@@ -30,34 +30,46 @@
       <form name="buildingSearch" novalidate>
         <md-content layout-padding>
           <md-input-container flex>
-            <input name="search" type="text" ng-focus="revealResults()" ng-blur="hideResults()" ng-model="searchText" ng-minlength="2">
-            <label>Search here</label>
+            <input name="search" type="text" ng-focus="revealResults()" ng-model="searchText" required >
+            <label>Find a hospital</label>
           </md-input-container>
         </md-content>  
       </form>
       </div>
 
-      <md-content>
-        <md-button class="md-raised rand" ng-click="addSet()">Add random set</button>
+      <div class="userRisk">
+      <form name="userRisk" novalidate>
+        <md-content layout-padding>
+          <md-input-container flex>
+            <input name="riskInput" type="text" ng-model="user">
+            <label>Or enter your own probability</label>
+            
+          </md-input-container>
+          <md-button class="md-raised" ng-click="userVis()">Visualize your risk</button>
+        </md-content>
+      </form>
+      </div>
+
+      <md-content class="randButton">
+        <md-button class="md-raised" ng-click="addSet()">or Add a random set</button>
       </md-content>
 
       <div class="buildings"  ng-repeat="building in buildingData | filter:searchText | limitTo:15">
-        <div class="oneBuilding" ng-show="buildingSearch.search.$dirty &&
-          buildingSearch.search.$valid && showResults"  ng-click="visBuilding(building)">  
-          <span>Hospital: {{building.facilityName}}, </span>
-          <span>Building: {{building.buildingName}}, </span>
-          <span>County: {{building.countyCode}}</span>
+        <div class="oneBuilding" ng-show="buildingSearch.$dirty && buildingSearch.$valid && showResults"  ng-click="visBuilding(building)">  
+          <span class="md-body-2">Hospital: {{building.facilityName}},
+           Building: {{building.buildingName}}, 
+           County: {{building.countyCode}}
+          </span>
         </div>
       </div>
-      
-      
-      <div ng-repeat="dataset in datasets">
-        <d3-field data="dataset.data" probabilities="dataset.probabilities"></d3-field>
+            
+     
+      <div class="d3Container">
+        <div ng-repeat="dataset in datasets">
+          <d3-field data="dataset.data" probabilities="dataset.probabilities"></d3-field>
+        </div>
       </div>
     </div>
-
-
-    
 
         
     <script src="app/riskField.js"></script>
